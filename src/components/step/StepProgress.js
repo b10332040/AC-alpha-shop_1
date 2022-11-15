@@ -1,9 +1,14 @@
-function StepProgress() {
+function StepProgress({currentStep = 1, steps}) {
+  const stepList = steps.map((step, index) => {
+    const stepNum = index + 1;
+    const stepStatus = (currentStep > stepNum) ? 'done' : (currentStep === stepNum) ? 'current' : 'not yet';
+
+    return <li key={step} data-status={stepStatus}><span>{stepNum}</span>{step}</li>;
+  });
+
   return (
     <ul>
-      <li>寄送地址</li>
-      <li>運送方式</li>
-      <li>付款資訊</li>
+      {stepList}
     </ul>
   );
 }
