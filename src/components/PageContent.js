@@ -4,7 +4,7 @@ import ProgressControl from './step/ProgressControl.js';
 
 export function Checkout () {
   const steps = ['寄送地址', '運送方式', '付款資訊'];
-  const currentStep = 3;
+  const currentStep = 1;
   
   return (
     <div className="container">
