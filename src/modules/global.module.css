@@ -1,0 +1,93 @@
+@value variables: './variables.module.css';
+@value sm, md, lg, xl, xxl from variables;
+
+/* START - container */
+:global(.container),
+:global(.container-sm),
+:global(.container-md),
+:global(.container-lg),
+:global(.container-xl),
+:global(.container-xxl) {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+:global(.container),
+:global(.container-sm),
+:global(.container-md),
+:global(.container-lg),
+:global(.container-xl),
+:global(.container-xxl),
+:global(.container-fluid) {
+  width: 100%;
+}
+
+@media screen and (min-width: sm){
+  :global(.container),
+  :global(.container-sm) {
+    width: 540px;
+  }
+}
+
+@media screen and (min-width: md){
+  :global(.container),
+  :global(.container-sm),
+  :global(.container-md) {
+    width: 720px;
+  }
+}
+
+@media screen and (min-width: lg){
+  :global(.container),
+  :global(.container-sm),
+  :global(.container-md),
+  :global(.container-lg) {
+    width: 960px;
+  }
+}
+
+@media screen and (min-width: xl){
+  :global(.container),
+  :global(.container-sm),
+  :global(.container-md),
+  :global(.container-lg),
+  :global(.container-xl) {
+    width: 1140px;
+  }
+}
+
+@media screen and (min-width: xxl){
+  :global(.container),
+  :global(.container-sm),
+  :global(.container-md),
+  :global(.container-lg),
+  :global(.container-xl),
+  :global(.container-xxl) {
+    width: 1320px;
+  }
+}
+/* CLOSE - container */
+
+/* START - row */
+:global(.row) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+/* CLOSE - row */
+
+/* START - col */
+:global(.col) {
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  max-width: 100%;
+}
+/* CLOSE - col */

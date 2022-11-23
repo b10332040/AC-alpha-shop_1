@@ -1,6 +1,7 @@
 import Header from './components/Header.js';
 import { Checkout } from './components/PageContent.js';
 import Footer from './components/Footer.js';
+import './modules/global.module.css';
 
 function App() {
   return (
