@@ -16,9 +16,9 @@ function Main({about}) {
   }
 
   return (
-    <main>
+    <div className='m-y-5'>
       {content}
-    </main>
+    </div>
   );
 }
 

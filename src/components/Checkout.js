@@ -12,8 +12,8 @@ function Checkout () {
   return (
     <div className='container'>
       <div className='row'>
-        <h1 className='col'>結帳</h1>
-        <main className='col'>
+        <h1 className='col-12'>結帳</h1>
+        <main className='col-12 col-md-6 col-lg-7'>
           <form>
             <StepProgress
               steps={steps}
@@ -28,8 +28,8 @@ function Checkout () {
             />
           </form>
         </main>
-        <aside className='col'>
-
+        <aside className='col-12 col-md-6 col-lg-5'>
+          <h3 className='d-none d-md-block'>購物籃</h3>
         </aside>
       </div>
     </div>

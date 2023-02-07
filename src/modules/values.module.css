@@ -1,0 +1,13 @@
+/* breakpoints */
+@value sm: 576px;
+@value md: 768px;
+@value lg: 992px;
+@value xl: 1200px;
+@value xxl: 1400px;
+
+/* colors */
+@value color-default: #2a2a2a;
+@value color-main-pink: #F67599;
+
+/* spacer */
+@value spacer: 1rem;
