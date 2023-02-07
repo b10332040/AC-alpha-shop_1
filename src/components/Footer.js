@@ -1,5 +1,5 @@
 /**
- * Footer
+ * Footer 頁尾
  */
 
 function Footer() {

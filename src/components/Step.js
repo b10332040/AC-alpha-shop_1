@@ -1,3 +1,7 @@
+/**
+ * Step 步驟
+ */
+
 function Step1() {
   return (
     <>
@@ -131,14 +135,14 @@ function Step3() {
   );
 }
 
-function Step({currentStep = 1, steps}) {
-  const currentStepTitle = steps[currentStep - 1];
-  const stepContentComponent = (currentStep === 1) ? <Step1 /> : (currentStep === 2) ? <Step2 /> : <Step3 />;
+function Step({steps, currentStep = 1}) {
+  const title = steps[currentStep - 1];
+  const content = (currentStep === 1) ? <Step1 /> : (currentStep === 2) ? <Step2 /> : <Step3 />;
   
   return (
-    <div className="steps">
-      <h2 className="step__title">{currentStepTitle}</h2>
-      {stepContentComponent}
+    <div className="c-step">
+      <h2 className="c-step__title">{title}</h2>
+      {content}
     </div>
   ); 
 }

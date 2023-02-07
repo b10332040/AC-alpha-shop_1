@@ -1,5 +1,5 @@
 /**
- * Header
+ * Header 上方導覽列
  */
 
 function Header() {
