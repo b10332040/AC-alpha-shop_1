@@ -1,0 +1,96 @@
+@value values: './values.module.css';
+@value sm, md, lg, xl, xxl from values;
+@value color-default, color-white, color-main-pink, color-main-black, color-undone from values;
+@value spacer from values;
+
+.step-progress {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.step-progress__step {
+  color: color-undone;
+}
+
+.step-progress__num,
+.step-progress__text {
+  vertical-align: middle;
+  font-weight: 600;
+}
+
+/* start - 步驟數字 */
+.step-progress__num {
+  border: 1px solid color-undone;
+  border-radius: 50%;
+  width: 3.2rem;
+  height: 3.2rem;
+  line-height: 3.2rem;
+  text-align: center;
+  font-size: 1.6rem;
+}
+@media screen and (min-width: lg) {
+  .step-progress__num {
+    width: 2.4rem;
+    height: 2.4rem;
+    line-height: 2.4rem;
+    font-size: 1.2rem;
+  }
+}
+/* close - 步驟數字 */
+
+
+/* start - 步驟文字 */
+@media screen and (min-width: md) {
+    .step-progress__text {
+      margin-left: 0.5rem;
+      font-size: 1.6rem;
+    }
+}
+/* close - 步驟文字 */
+
+
+/* start - 當前步驟 */
+.step-progress__step.is-focus {
+  color: color-main-black;
+}
+
+.step-progress__step.is-focus .step-progress__num {
+  border: 1px solid color-main-black;
+}
+/* close - 當前步驟 */
+
+/* start - 步驟完成 */
+.step-progress__step.is-done {
+  color: color-main-black;
+}
+.step-progress__step.is-done .step-progress__num {
+  position: relative;
+  border: 1px solid color-main-black;
+  background-color: color-main-black;
+}
+.step-progress__step.is-done .step-progress__num::before {
+  content: '✓';
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 3.2rem;
+  height: 3.2rem;
+  line-height: 3.2rem;
+  display: block;
+  color: color-white;
+  text-align: center;
+  background-color: color-main-black;
+}
+
+@media screen and (min-width: lg) {
+  .step-progress__step.is-done .step-progress__num::before {
+    width: 2.4rem;
+    height: 2.4rem;
+    line-height: 2.4rem;
+  }
+}
+/* close - 步驟完成 */

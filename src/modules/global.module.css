@@ -1,6 +1,6 @@
 @value values: './values.module.css';
 @value sm, md, lg, xl, xxl from values;
-@value color-default, color-main-pink from values;
+@value color-default, color-white, color-main-pink, color-main-black, color-undone from values;
 @value spacer from values;
 
 /* START - CSS reset
@@ -70,6 +70,7 @@ html {
 body {
   color: color-default;
   font-size: 1.2rem;
+  font-family: sans-serif;
 }
 
 /* start - h1 ~ h6 */
