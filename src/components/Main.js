@@ -4,7 +4,7 @@
 import Checkout from './Checkout.js';
 
 function Main({about}) {
-  let content = <Checkout />;
+  let content = <></>;
 
   switch (about) {
     case 'checkout':
@@ -16,7 +16,7 @@ function Main({about}) {
   }
 
   return (
-    <div className="m-y-5">
+    <div className="p-y-5">
       {content}
     </div>
   );

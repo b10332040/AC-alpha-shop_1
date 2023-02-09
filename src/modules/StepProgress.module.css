@@ -1,28 +1,50 @@
-@value values: './values.module.css';
-@value sm, md, lg, xl, xxl from values;
-@value color-default, color-white, color-main-pink, color-main-black, color-undone from values;
-@value spacer from values;
+@import './values.module.css';
+@value breakpoints: './valueAboutBreakpoints.module.css';
+@value sm, md, lg, xl, xxl from breakpoints;
 
 .step-progress {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: calc(var(--spacer) * 3);
+}
+@media screen and (min-width: md) {
+  .step-progress {
+    margin-bottom: calc(var(--spacer) * 5);
+  }
 }
 
 .step-progress__step {
-  color: color-undone;
+  counter-increment: step;
+  color: var(--color-muted);
 }
 
+/* start - 步驟線 */
+.step-progress__line {
+  width: calc(100% / 3 - 52px);
+  height: 2px;
+  background-color: var(--color-tertiary);
+}
+.step-progress__line.is-active {
+  background-color: var(--color-main-black);
+}
+@media screen and (min-width: md) {
+  .step-progress__line {
+    width: calc(100% / 3 - 77px);
+  }
+}
+/* close - 步驟線 */
+
 .step-progress__num,
-.step-progress__text {
+.step-progress__label {
   vertical-align: middle;
   font-weight: 600;
 }
 
 /* start - 步驟數字 */
 .step-progress__num {
-  border: 1px solid color-undone;
+  border: 1px solid var(--color-muted);
   border-radius: 50%;
   width: 3.2rem;
   height: 3.2rem;
@@ -43,7 +65,7 @@
 
 /* start - 步驟文字 */
 @media screen and (min-width: md) {
-    .step-progress__text {
+    .step-progress__label {
       margin-left: 0.5rem;
       font-size: 1.6rem;
     }
@@ -53,22 +75,22 @@
 
 /* start - 當前步驟 */
 .step-progress__step.is-focus {
-  color: color-main-black;
+  color: var(--color-main-black);
 }
 
 .step-progress__step.is-focus .step-progress__num {
-  border: 1px solid color-main-black;
+  border: 1px solid var(--color-main-black);
 }
 /* close - 當前步驟 */
 
 /* start - 步驟完成 */
 .step-progress__step.is-done {
-  color: color-main-black;
+  color: var(--color-main-black);
 }
 .step-progress__step.is-done .step-progress__num {
   position: relative;
-  border: 1px solid color-main-black;
-  background-color: color-main-black;
+  border: 1px solid var(--color-main-black);
+  background-color: var(--color-main-black);
 }
 .step-progress__step.is-done .step-progress__num::before {
   content: '✓';
@@ -81,9 +103,9 @@
   height: 3.2rem;
   line-height: 3.2rem;
   display: block;
-  color: color-white;
+  color: var(--color-white);
   text-align: center;
-  background-color: color-main-black;
+  background-color: var(--color-main-black);
 }
 
 @media screen and (min-width: lg) {

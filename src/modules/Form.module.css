@@ -1,0 +1,3 @@
+@import './values.module.css';
+@value breakpoints: './valueAboutBreakpoints.module.css';
+@value sm, md, lg, xl, xxl from breakpoints;
