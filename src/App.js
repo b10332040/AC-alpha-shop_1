@@ -7,7 +7,7 @@ function App() {
     component: Checkout,
     props: {
       title: '結帳',
-      currentStep: 3,
+      currentStep: 1,
     }
   }
   const Main = React.createElement(
