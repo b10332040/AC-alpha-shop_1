@@ -1,7 +1,3 @@
-
-import { Fragment } from 'react';
-import '../modules/Form.module.css';
-
 /**
  * 欄位 - 下拉選單
  * @param {string} id - id
@@ -19,8 +15,8 @@ function Select({id, name, value, data, outerClassName}) {
   });
 
   return (
-    <div className={outerClassName}>
-      <select id={id} name={name} className='form__control' defaultValue={value}>
+    <div className={`form__control-outer--select ${outerClassName}`}>
+      <select id={id} name={name} defaultValue={value} className='form__control'>
         {content}
       </select>
     </div>
@@ -32,15 +28,15 @@ function Select({id, name, value, data, outerClassName}) {
  * @param {string} id - id
  * @param {string} name - 名稱
  * @param {string} value - 值
- * @param {string} type - 類型
+ * @param {string} controlType - 類型
  * @param {string} placeholder - 提示文字
  * @param {string} outerClassName - 父層的 class name
  * @returns 
  */
-function Text({id, name, value, type, placeholder, outerClassName}) {
+function Text({id, name, value, controlType, placeholder, outerClassName}) {
   return (
     <div className={outerClassName}>
-      <input id={id} name={name} type={type} placeholder={placeholder} defaultValue={value} />
+      <input id={id} name={name} controlType={controlType} placeholder={placeholder} defaultValue={value} className='form__control' />
     </div>
   );
 }
@@ -72,8 +68,7 @@ function CheckBars({name, value, data, checkType, outerClassName}) {
               {check.label}
               {(typeof check.price !== 'undefined') && <span className="form__check-bar__title__price">{(check.price > 0) ? '$' + check.price: '免費'}</span>}
             </p>
-            <br/>
-            <small className="form__check-bar__note">{check.note}</small>
+            <p className="form__check-bar__note">{check.note}</p>
           </label>
         </div>
       </div>
@@ -96,10 +91,10 @@ function CheckBars({name, value, data, checkType, outerClassName}) {
  * @param {array} data - data - 下拉選單或單、複選資料 (預設：[])
  * @param {string} placeholder - 提示文字 (預設：'')
  * @param {string} checkType - 單選或複選 (預設：'radio' 單選)
- * @param {string} outerClassName - 父層的 class name  (預設：'m-b-2')
+ * @param {string} outerClassName - 父層的 class name  (預設：'m-b-3')
  * @returns 
  */
-export function FormControl({controlType, name, id=name, value='', data=[], placeholder='', checkType='radio', outerClassName='m-b-2'}) {
+export function FormControl({controlType, name, id=name, value='', data=[], placeholder='', checkType='radio', outerClassName='m-b-3'}) {
   let content = <></>;
 
   switch (controlType) {
@@ -110,7 +105,7 @@ export function FormControl({controlType, name, id=name, value='', data=[], plac
     case "text":
     case "tel":
     case "email":
-      content = <Text id={id} name={name} value={value} type={controlType} placeholder={placeholder} outerClassName={outerClassName} />;
+      content = <Text id={id} name={name} value={value} controlType={controlType} placeholder={placeholder} outerClassName={outerClassName} />;
       break;
 
     case "checkBars":
@@ -132,14 +127,13 @@ export function FormControl({controlType, name, id=name, value='', data=[], plac
  * 欄位標籤
  * @param {string} targetId - 對應的欄位id
  * @param {label} label - 標籤名稱
- * @param {string} className - class name (預設：'form__label')
  * @param {string} outerClassName - 父層的 class name  (預設：'m-b-1')
  * @returns 
  */
-export function FormLabel({targetId, label, className='form__label', outerClassName='m-b-1'}) {
+export function FormLabel({targetId, label, outerClassName='m-b-1'}) {
   return (
     <div className={outerClassName}>
-      <label htmlFor={targetId} className={className}>{label}</label>
+      <label htmlFor={targetId} className='form__label'>{label}</label>
     </div>
   );
 }

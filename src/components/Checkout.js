@@ -9,14 +9,13 @@ import ProgressControl from './ProgressControl.js';
  * 前往結帳
  * @returns 
  */
-function Checkout () {
+function Checkout ({title='', currentStep}) {
   const steps = ['寄送地址', '運送方式', '付款資訊'];
-  const currentStep = 1;
   
   return (
     <div className="container">
       <div className="row">
-        <h1 className="col-12">結帳</h1>
+        <h1 className="col-12">{title}</h1>
         <main className="col-12 col-md-6 col-lg-7 p-y-3">
           <form>
             <StepProgress

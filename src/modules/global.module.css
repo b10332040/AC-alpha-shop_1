@@ -1,5 +1,5 @@
-@import './values.module.css';
-@value breakpoints: './valueAboutBreakpoints.module.css';
+@import './roots.module.css';
+@value breakpoints: './values.module.css';
 @value sm, md, lg, xl, xxl from breakpoints;
 
 /* START - CSS reset
@@ -411,7 +411,6 @@ h6 {
 /**
  * START - Component
  */
-
 /**
  * CLOSE - Component
  */

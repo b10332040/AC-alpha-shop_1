@@ -6,14 +6,15 @@
  * @returns 
  */
 function ProgressControl ({steps, currentStep = 1}) {
-  const prevStepBtn = (currentStep === 1) ? '' :  <button className="btn btn-step about-prev-step">上一步</button>;
-  const nextStepBtn = (currentStep !== steps.length) ? <button className="btn btn-step about-next-step">下一步</button> : <button className="btn btn-primary">確認下單</button>;
+  const className = (currentStep === 1) ? 'col-12' : 'col-6';
 
   return (
-    <div className="c-progressControl">
-      <div className="l-row">
-        <div className="l-col-6">{prevStepBtn}</div>
-        <div className="l-col-6">{nextStepBtn}</div>
+    <div className="row">
+      <div className={className}>
+        {(currentStep > 1) && <button className="btn">上一步</button>}
+      </div>
+      <div className={className}>
+        {(currentStep !== steps.length) ? <button className="btn">下一步</button> : <button className="btn">確認下單</button>}
       </div>
     </div>
   );

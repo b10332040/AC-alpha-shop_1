@@ -1,8 +1,11 @@
 /**
  * Step 步驟
  */
+import React from 'react';
+
 import {FormControl} from './Form.js';
 import {FormLabel} from './Form.js';
+import styles from '../modules/Form.module.css';
 
 function Step1() {
   const formControls = {
@@ -179,7 +182,7 @@ function Step1() {
       </div>
 
       <div className="row">
-        <div className="form-group col-12 col-md-6">
+        <div className="col-12 col-md-6">
           <FormLabel
             targetId="phone"
             label="電話"
@@ -190,7 +193,7 @@ function Step1() {
             placeholder="請輸入行動電話"
           />
         </div>
-        <div className="form-group col-12 col-md-6">
+        <div className="col-12 col-md-6">
           <FormLabel
             targetId="email"
             label="Email"
@@ -204,7 +207,7 @@ function Step1() {
       </div>
 
       <div className="row">
-        <div className="col-md-4">
+        <div className="col-12 col-md-4">
           <FormLabel
             targetId="city"
             label="縣市"
@@ -215,7 +218,7 @@ function Step1() {
             data={formControls.city.options}
           />
         </div>
-        <div className="col-md-8">
+        <div className="col-12 col-md-8">
           <FormLabel
             targetId="address"
             label="地址"
@@ -332,13 +335,21 @@ function Step3() {
  */
 function Step({steps, currentStep = 1}) {
   const title = steps[currentStep - 1];
-  const content = (currentStep === 1) ? <Step1 /> : (currentStep === 2) ? <Step2 /> : <Step3 />;
+  const components = {
+    1: Step1,
+    2: Step2,
+    3: Step3
+  };
+
+  const Content = React.createElement(
+    components[currentStep]
+  );
   
   return (
-    <div className="c-step">
-      <h2 className="c-step__title m-y-3">{title}</h2>
-      {content}
-    </div>
+    <>
+      <h2 className="m-y-3">{title}</h2>
+      {Content}
+    </>
   ); 
 }
 
