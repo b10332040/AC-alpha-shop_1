@@ -1,0 +1,17 @@
+@value breakpoints: './values.module.css';
+@value sm, md, lg, xl, xxl from breakpoints;
+
+.progress-control {
+  margin-top: calc(var(--spacer) * 2);;
+  border-top: 2px solid var(--color-border-muted);
+  padding-top: calc(var(--spacer) * 3);
+}
+
+.progress-control .btn {
+  width: 100%;
+}
+@media screen and (min-width: md) {
+  .progress-control .btn {
+    max-width: 17.4rem;
+  }
+}

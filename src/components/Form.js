@@ -36,7 +36,7 @@ function Select({id, name, value, data, outerClassName}) {
 function Text({id, name, value, controlType, placeholder, outerClassName}) {
   return (
     <div className={outerClassName}>
-      <input id={id} name={name} controlType={controlType} placeholder={placeholder} defaultValue={value} className='form__control' />
+      <input id={id} name={name} type={controlType} placeholder={placeholder} defaultValue={value} className='form__control' />
     </div>
   );
 }

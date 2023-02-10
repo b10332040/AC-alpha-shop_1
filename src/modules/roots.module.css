@@ -11,10 +11,12 @@
   --color-placeholder: #999999;
 
   --color-border-black: #4A4A4A;
+  --color-border-muted: #E6E6EB;
 
   /* spacer */
   --spacer: .8rem;
 
   /* border radius */
   --border-radius-form-control: .4rem;
+  --border-radius-brn: .8rem;
 }
