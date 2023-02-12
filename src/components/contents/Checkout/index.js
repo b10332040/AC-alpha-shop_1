@@ -6,6 +6,7 @@ import Address from './Address';
 import Shipping from './Shipping';
 import CreditCard from './CreditCard';
 import ProgressControl from './ProgressControl';
+import Cart from './Cart';
 
 /**
  * 結帳
@@ -52,21 +53,22 @@ function Checkout ({currentStep = 1}) {
       <div className="row">
         <h1 className="col-12">結帳</h1>
         <main className="col-12 col-md-6 col-lg-7 p-y-3">
-          <form>
-            <StepProgress
-              data={stepProgressData}
-              currentStep={currentStep}
-            />
-            <h2 className='m-y-3'>{currentStepData.props.title}</h2>
-            {Step}
-            <ProgressControl
-              totalSteps={totalSteps}
-              currentStep={currentStep}
-            />
-          </form>
+          <StepProgress
+            data={stepProgressData}
+            currentStep={currentStep}
+          />
+          <h2 className='m-y-3'>{currentStepData.props.title}</h2>
+          {Step}
+          <div className='d-md-none m-y-3'>
+            <Cart />
+          </div>
+          <ProgressControl
+            totalSteps={totalSteps}
+            currentStep={currentStep}
+          />
         </main>
-        <aside className="col-12 col-md-6 col-lg-5 p-y-3">
-          {/* <h3 className="d-none d-md-block">購物籃</h3> */}
+        <aside className="d-none d-md-block col-12 col-md-6 col-lg-5 p-y-3">
+          <Cart />
         </aside>
       </div>
     </div>
