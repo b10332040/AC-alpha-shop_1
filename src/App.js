@@ -1,16 +1,17 @@
 import React from 'react';
-import Checkout from './components/Checkout.js';
-import './modules/global.module.css';
+
+import Checkout from './components/contents/Checkout';
+
+import './assets/styles/global.module.css';
 
 function App() {
   const data = {
     component: Checkout,
     props: {
-      title: '結帳',
-      currentStep: 1,
+      currentStep: 3,
     }
   }
-  const Main = React.createElement(
+  const Content = React.createElement(
     data.component,
     data.props
   );
@@ -19,7 +20,7 @@ function App() {
     <div className="App">
       {/* <Header/> */}
       <div className="p-y-5">
-        {Main}
+        {Content}
       </div>
       {/* <Footer/> */}
     </div>

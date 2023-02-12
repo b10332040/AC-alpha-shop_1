@@ -1,14 +1,13 @@
+import Label from '../../../components/Label';
+import Input from '../../../components/Input';
+import Select from '../../../components/Select';
+
 /**
- * Step 步驟
+ * 寄送地址
+ * @returns 
  */
-import React from 'react';
-
-import {FormControl} from './Form.js';
-import {FormLabel} from './Form.js';
-import styles from '../modules/Form.module.css';
-
-function Step1() {
-  const formControls = {
+function Address() {
+  const data = {
     call: {
       value: 'mr',
       options: [
@@ -157,24 +156,23 @@ function Step1() {
     <>
       <div className="row">
         <div className="col-12 col-md-4">
-          <FormLabel
+          <Label
             targetId="call"
-            label="稱謂"
+            text="稱謂"
           />
-          <FormControl 
-            controlType="select"
+          <Select 
             name="call"
-            value={formControls.call.value}
-            data={formControls.call.options}
+            value={data.call.value}
+            data={data.call.options}
           />
         </div>
         <div className="col-12 col-md-8">
-          <FormLabel
+          <Label
             targetId="name"
-            label="姓名"
+            text="姓名"
           />
-          <FormControl 
-            controlType="text"
+          <Input 
+            type="text"
             name="name"
             placeholder="請輸入姓名"
           />
@@ -183,23 +181,23 @@ function Step1() {
 
       <div className="row">
         <div className="col-12 col-md-6">
-          <FormLabel
+          <Label
             targetId="phone"
-            label="電話"
+            text="電話"
           />
-          <FormControl 
-            controlType="tel"
+          <Input 
+            type="tel"
             name="phone"
             placeholder="請輸入行動電話"
           />
         </div>
         <div className="col-12 col-md-6">
-          <FormLabel
+          <Label
             targetId="email"
-            label="Email"
+            text="Email"
           />
-          <FormControl 
-            controlType="email"
+          <Input 
+            type="email"
             name="email"
             placeholder="請輸入電子郵件"
           />
@@ -208,23 +206,22 @@ function Step1() {
 
       <div className="row">
         <div className="col-12 col-md-4">
-          <FormLabel
+          <Label
             targetId="city"
-            label="縣市"
+            text="縣市"
           />
-          <FormControl 
-            controlType="select"
+          <Select 
             name="city"
-            data={formControls.city.options}
+            data={data.city.options}
           />
         </div>
         <div className="col-12 col-md-8">
-          <FormLabel
+          <Label
             targetId="address"
-            label="地址"
+            text="地址"
           />
-          <FormControl 
-            controlType="text"
+          <Input 
+            type="text"
             name="address"
             placeholder="請輸入地址"
           />
@@ -234,123 +231,4 @@ function Step1() {
   );
 }
 
-function Step2() {
-  const formControls = {
-    shipping: {
-      value: 'default',
-      data: [
-        {
-          id: 'shippingDefault',
-          value: 'default',
-          label: '標準運送',
-          price: 0,
-          note: '約 3~7 個工作天'
-        },
-        {
-          id: 'shippingDHL',
-          value: 'DHL',
-          label: 'DHL 貨運',
-          price: 500,
-          note: '48小時內送達'
-        }
-      ]
-    }
-  }
-
-  return (
-    <>
-      <FormControl 
-        controlType="checkBars"
-        name="shipping"
-        value={formControls.shipping.value}
-        data={formControls.shipping.data}
-        checkType="radio"
-      />
-    </>
-  );
-}
-
-function Step3() {
-  return (
-    <>
-      <div className="row">
-        <div className="col-12 col-md-8">
-          <FormLabel
-            targetId="creditCardName"
-            label="持卡人姓名"
-          />
-          <FormControl 
-            controlType="text"
-            name="creditCardName"
-            placeholder="John Doe"
-          />
-        </div>
-      </div>
-      <div className="row">
-        <div className="col-12 col-md-8">
-          <FormLabel
-            targetId="creditCardNumber"
-            label="卡號"
-          />
-          <FormControl 
-            controlType="text"
-            name="creditCardNumber"
-            placeholder="1111 2222 3333 4444"
-          />
-        </div>
-      </div>
-      <div className="row">
-        <div className="col-12 col-md-6">
-          <FormLabel
-            targetId="creditCardEffectiveDate"
-            label="有效期限"
-          />
-          <FormControl 
-            controlType="text"
-            name="creditCardEffectiveDate"
-            placeholder="MM/YY"
-          />
-        </div>
-        <div className="col-12 col-md-6">
-          <FormLabel
-            targetId="creditCardCVC"
-            label="CVC / CCV"
-          />
-          <FormControl 
-            controlType="text"
-            name="creditCardCVC"
-            placeholder="123"
-          />
-        </div> 
-      </div>
-    </>
-  );
-}
-
-/**
- * 步驟表單
- * @param {array} 所有步驟 
- * @param {number} 當前步驟(預設：1) 
- * @returns 
- */
-function Step({steps, currentStep = 1}) {
-  const title = steps[currentStep - 1];
-  const components = {
-    1: Step1,
-    2: Step2,
-    3: Step3
-  };
-
-  const Content = React.createElement(
-    components[currentStep]
-  );
-  
-  return (
-    <>
-      <h2 className="m-y-3">{title}</h2>
-      {Content}
-    </>
-  ); 
-}
-
-export default Step;
+export default Address;

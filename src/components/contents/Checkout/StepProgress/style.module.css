@@ -1,4 +1,4 @@
-@value breakpoints: './values.module.css';
+@value breakpoints: '../../../../assets/styles/values.module.css';
 @value sm, md, lg, xl, xxl from breakpoints;
 
 .step-progress {
