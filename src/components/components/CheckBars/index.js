@@ -17,8 +17,8 @@ function CheckBars({type, name, value, data, outerClassName='m-b-3'}) {
             type={type}
             className="form__check-bar__input"
             name={name}
-            value={data.value}
-            defaultChecked={(data.value === value) ? 'true' : 'false'}
+            value={check.value}
+            defaultChecked={(check.value === value) ? true : false}
           />
           <label htmlFor={check.id} className="form__check-bar__main">
             <p className="form__check-bar__title">

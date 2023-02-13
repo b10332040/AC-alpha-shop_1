@@ -8,7 +8,7 @@ function App() {
   const data = {
     component: Checkout,
     props: {
-      currentStep: 2,
+      currentStep: 1,
     }
   }
   const Content = React.createElement(
