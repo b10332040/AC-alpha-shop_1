@@ -8,9 +8,9 @@ import styles from './style.module.css';
  * @returns 
  */
 function StepProgress({data, currentStep}) {
+  const totalSteps = data.length;
   const content = data.map((step, index) => {
     let thisStep = index + 1;
-    const totalSteps = data.length;
     const stepStatus = (currentStep === thisStep) ? 'is-focus' : (currentStep > thisStep) ? 'is-done' : 'is-undone';
 
     return (
@@ -23,11 +23,13 @@ function StepProgress({data, currentStep}) {
         </li>
         {
           (thisStep !== totalSteps) &&
-          <li data-step={thisStep} className={`${styles['step-progress__line']} ${(thisStep <= currentStep) && styles['is-active']}`}></li>
+          <li data-step={thisStep} className={`${styles['step-progress__line']} ${(thisStep <= currentStep) && styles['is-active']}`} aria-hidden="true"></li>
         }
       </Fragment>
     );
   });
+
+  document.documentElement.style.setProperty('--progress-steps',totalSteps);
 
   return (
     <ul className={`${styles['step-progress']}`}>

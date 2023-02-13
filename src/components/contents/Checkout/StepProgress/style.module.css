@@ -1,6 +1,3 @@
-@value breakpoints: '../../../../assets/styles/values.module.css';
-@value sm, md, lg, xl, xxl from breakpoints;
-
 .step-progress {
   display: flex;
   flex-wrap: wrap;
@@ -8,7 +5,7 @@
   align-items: center;
   margin-bottom: calc(var(--spacer) * 3);
 }
-@media screen and (min-width: md) {
+@media screen and (min-width: 768px) {
   .step-progress {
     margin-bottom: calc(var(--spacer) * 5);
   }
@@ -21,16 +18,16 @@
 
 /* start - 步驟線 */
 .step-progress__line {
-  width: calc(100% / 3 - 52px);
+  width: calc(100% / var(--progress-steps) - 52px);
   height: 2px;
   background-color: var(--color-tertiary);
 }
 .step-progress__line.is-active {
   background-color: var(--color-main-black);
 }
-@media screen and (min-width: md) {
+@media screen and (min-width: 768px) {
   .step-progress__line {
-    width: calc(100% / 3 - 77px);
+    width: calc(100% / var(--progress-steps) - 77px);
   }
 }
 /* close - 步驟線 */
@@ -51,7 +48,7 @@
   text-align: center;
   font-size: 1.6rem;
 }
-@media screen and (min-width: lg) {
+@media screen and (min-width: 992px) {
   .step-progress__num {
     width: 2.4rem;
     height: 2.4rem;
@@ -63,7 +60,7 @@
 
 
 /* start - 步驟文字 */
-@media screen and (min-width: md) {
+@media screen and (min-width: 768px) {
     .step-progress__label {
       margin-left: 0.5rem;
       font-size: 1.6rem;
@@ -107,7 +104,7 @@
   background-color: var(--color-main-black);
 }
 
-@media screen and (min-width: lg) {
+@media screen and (min-width: 992px) {
   .step-progress__step.is-done .step-progress__num::before {
     width: 2.4rem;
     height: 2.4rem;

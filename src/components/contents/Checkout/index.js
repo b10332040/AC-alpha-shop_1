@@ -2,11 +2,10 @@
 import React from 'react';
 
 import StepProgress from './StepProgress';
-import Address from './Address';
-import Shipping from './Shipping';
-import CreditCard from './CreditCard';
 import ProgressControl from './ProgressControl';
 import Cart from './Cart';
+
+import data from './data.js';
 
 /**
  * 結帳
@@ -15,26 +14,6 @@ import Cart from './Cart';
  */
 function Checkout ({currentStep = 1}) {
   const totalSteps = 3;
-  const data = {
-    step1: {
-      component: Address,
-      props: {
-        title: '寄送地址',
-      }
-    },
-    step2: {
-      component: Shipping,
-      props: {
-        title: '運送方式',
-      }
-    },
-    step3: {
-      component: CreditCard,
-      props: {
-        title: '付款資訊',
-      }
-    }
-  }
 
   currentStep = (currentStep > 0 && currentStep <= totalSteps) ? currentStep : 1;
 
@@ -52,7 +31,7 @@ function Checkout ({currentStep = 1}) {
     <div className="container">
       <div className="row">
         <h1 className="col-12">結帳</h1>
-        <main className="col-12 col-md-6 col-lg-7 p-y-3">
+        <main className="col-12 col-lg-7 p-y-3">
           <StepProgress
             data={stepProgressData}
             currentStep={currentStep}
@@ -67,7 +46,7 @@ function Checkout ({currentStep = 1}) {
             currentStep={currentStep}
           />
         </main>
-        <aside className="d-none d-md-block col-12 col-md-6 col-lg-5 p-y-3">
+        <aside className="d-none d-md-block col-12 col-lg-5 p-y-3">
           <Cart />
         </aside>
       </div>
