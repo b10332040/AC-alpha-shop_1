@@ -1,4 +1,4 @@
-import {Button, ArrowButton} from '../../../components/Button';
+import {Button, ArrowButton} from '../../../widgets/Button';
 import styles from './style.module.css';
 
 /**

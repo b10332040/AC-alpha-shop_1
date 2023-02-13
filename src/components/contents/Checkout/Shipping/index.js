@@ -1,6 +1,6 @@
 import data from './data.js'
 
-import CheckBars from '../../../components/CheckBars';
+import CheckBars from '../../../widgets/CheckBars';
 
 /**
  * 運送方式

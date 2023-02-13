@@ -1,8 +1,8 @@
 import data from './data.js';
 
-import Label from '../../../components/Label';
-import Input from '../../../components/Input';
-import Select from '../../../components/Select';
+import Label from '../../../widgets/Label';
+import Input from '../../../widgets/Input';
+import Select from '../../../widgets/Select';
 
 /**
  * 寄送地址

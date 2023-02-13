@@ -1,5 +1,5 @@
-import Label from '../../../components/Label';
-import Input from '../../../components/Input';
+import Label from '../../../widgets/Label';
+import Input from '../../../widgets/Input';
 
 function CreditCard() {
   return (
