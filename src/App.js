@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-
 import Checkout from './components/contents/Checkout';
-
 import './assets/styles/global.module.css';
 
 function App() {

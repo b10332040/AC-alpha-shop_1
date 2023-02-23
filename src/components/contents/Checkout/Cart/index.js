@@ -1,10 +1,21 @@
+import { useState } from 'react';
 import data from './data.js';
 import styles from './style.module.css';
-
 import CartProductItem from './CartProductItem';
 import CartCalcItem from './CartCalcItem';
 
 function Cart({shipping=0}) {
+  const [shoppingList, setShoppingList] = useState(data);
+
+  // 增加數量
+  function handleIncreaseClick(productId) {
+    
+  }
+  // 減少數量
+  function handleDecreaseClick(productId) {
+
+  }
+
   const CartProductItems = data.map((product) => {
     return (
       <div key={`cart-productItem-${product.id}`} className='m-b-4'>
@@ -13,6 +24,8 @@ function Cart({shipping=0}) {
           img={product.img}
           price={product.price}
           quantity={product.quantity}
+          onIncreaseClick={handleIncreaseClick}
+          onDecreaseClick={handleDecreaseClick}
         />
       </div>
     );
