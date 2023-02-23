@@ -1,10 +1,7 @@
 # ALPHA Shop I-III
 React 專案，練習：
-I-II. 元件拆分與渲染
 - 理解 React 專案基本的 Best Practice，如：資料夾結構、元件命名。
 - 從 ALPHA Shop 畫面上構思、抽象化成 Component。
-
-III. 更新狀態
 - 能使用 useState 及 props 來：
   - 切換步驟。
   - 控制購物車商品數量顯示正確總金額。
