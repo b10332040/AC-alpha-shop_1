@@ -1,5 +1,4 @@
 import styles from './style.module.css';
-
 import Img from '../../../../widgets/Img';
 
 /**
@@ -26,9 +25,26 @@ function CartProductItem({name, img, price, quantity, onIncreaseClick, onDecreas
       <div className={`${styles['cart__product-item__info']} col-7 col-sm-8`}>
         <h3 className={`${styles['cart__product-item__title']}`}>{name}</h3>
         <div className={`${styles['cart__product-item__controls']} fw-bold`}>
-          <button type='button' aria-label='-' title='-' className={`${styles['cart__product-item__quantity-control']}`} onClick={onDecreaseClick}>-</button>
+          <button
+            type='button'
+            aria-label='-'
+            title='-'
+            className={`${styles['cart__product-item__quantity-control']}`}
+            onClick={onDecreaseClick}
+            disabled={(quantity > 0) ? false : true }
+          >
+            -
+          </button>
           <div className={`${styles['cart__product-item__quantity']}`}>{quantity}</div>
-          <button type='button' aria-label='+' title='+' className={`${styles['cart__product-item__quantity-control']}`} onClick={onIncreaseClick}>+</button>
+          <button
+            type='button'
+            aria-label='+'
+            title='+'
+            className={`${styles['cart__product-item__quantity-control']}`}
+            onClick={onIncreaseClick}
+          >
+            +
+          </button>
         </div>
         <div className={`${styles['cart__product-item__price']} fw-bold`}>${price}</div>
       </div>

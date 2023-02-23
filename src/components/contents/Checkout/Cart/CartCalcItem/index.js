@@ -4,10 +4,11 @@ import styles from './style.module.css';
  * 購物籃價格計算
  * @param {string} text 文字
  * @param {number} price 價格
+ * @param {boolean} showFree 是否顯示免費 (預設：否)
  * @returns 
  */
-function CartCalcItem({text, price}) {
-  price = (price > 0) ? '$' + price.toString() : '免費';
+function CartCalcItem({text, price, showFree = false}) {
+  price = (price === 0 && showFree) ?  '免費' : '$' + price.toString();
 
   return (
     <div className={`${styles['cart__calc-item']}`}>

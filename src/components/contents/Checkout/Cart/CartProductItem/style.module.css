@@ -47,7 +47,10 @@
   font-size: 1.6rem;
   background-color: var(--color-tertiary);
 }
-.cart__product-item__quantity-control:hover {
+.cart__product-item__quantity-control:disabled {
+  cursor: default;
+}
+.cart__product-item__quantity-control:not(:disabled):hover {
   background-color: var(--color-default);
   color: var(--color-tertiary);
 }

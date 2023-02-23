@@ -1,4 +1,4 @@
-const data = [
+const shoppingListData = [
   {
     id: '1',
     name: '貓咪罐罐',
@@ -15,4 +15,4 @@ const data = [
   },
 ];
 
-export default data;
+export default shoppingListData;

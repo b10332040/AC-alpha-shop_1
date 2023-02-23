@@ -1,41 +1,36 @@
-import { useState } from 'react';
-import data from './data.js';
 import styles from './style.module.css';
 import CartProductItem from './CartProductItem';
 import CartCalcItem from './CartCalcItem';
 
-function Cart({shipping=0}) {
-  const [shoppingList, setShoppingList] = useState(data);
-
-  // 增加數量
-  function handleIncreaseClick(productId) {
-    
+/**
+ * 購物籃
+ * @param {object} shoppingList - 購物清單
+ * @param {function} onIncreaseClick - 處理增加購物籃商品數量
+ * @param {function} onDecreaseClick - 處理減少購物籃商品數量
+ * @param {number} shipping - 運費 (預設：0)
+ */
+function Cart({shoppingList, onIncreaseClick, onDecreaseClick, shipping=0}) {
+  // 計算總金額
+  let totalPrice = 0;  
+  for (let i = 0; i < shoppingList.length; i++) {
+    totalPrice += shoppingList[i].price * shoppingList[i].quantity;
   }
-  // 減少數量
-  function handleDecreaseClick(productId) {
 
-  }
-
-  const CartProductItems = data.map((product) => {
+  const CartProductItems = shoppingList.map((product) => {
     return (
       <div key={`cart-productItem-${product.id}`} className='m-b-4'>
         <CartProductItem
-          name={product.name}
-          img={product.img}
-          price={product.price}
-          quantity={product.quantity}
-          onIncreaseClick={handleIncreaseClick}
-          onDecreaseClick={handleDecreaseClick}
+          {...product}
+          onIncreaseClick={() => {
+            onIncreaseClick(product.id);
+          }}
+          onDecreaseClick={() => {
+            onDecreaseClick(product.id)
+          }}
         />
       </div>
     );
   });
-
-  let totalPrice = 0;
-
-  for (let i = 0; i < data.length; i++) {
-    totalPrice += data[i].price;
-  }
 
   return (
     <section className={`${styles['cart']} p-x-3 p-y-4`}>
@@ -46,6 +41,7 @@ function Cart({shipping=0}) {
       <CartCalcItem 
         text="運費"
         price={shipping}
+        showFree={true}
       />
       <CartCalcItem 
         text="小計"
