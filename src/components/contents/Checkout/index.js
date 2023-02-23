@@ -10,9 +10,11 @@ import data from './data.js';
 /**
  * 結帳
  * @param {number} currentStep - 當前步驟 (預設：1)
+ * @param {function} onPrevStepClick - 處理點擊上一步
+ * @param {function} onNextStepClick -  處理點擊下一步
  * @returns 
  */
-function Checkout ({currentStep = 1}) {
+function Checkout ({currentStep = 1, onPrevStepClick, onNextStepClick}) {
   const totalSteps = 3;
 
   currentStep = (currentStep > 0 && currentStep <= totalSteps) ? currentStep : 1;
@@ -44,6 +46,8 @@ function Checkout ({currentStep = 1}) {
           <ProgressControl
             totalSteps={totalSteps}
             currentStep={currentStep}
+            onPrevStepClick={onPrevStepClick}
+            onNextStepClick={onNextStepClick}
           />
         </main>
         <aside className="d-none d-md-block col-12 col-lg-5 p-y-3">
