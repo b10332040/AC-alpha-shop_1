@@ -1,15 +1,16 @@
+import { useContext } from 'react';
+import { StepContext } from '../CheckoutContext';
 import {Button, ArrowButton} from '../../../widgets/Button';
 import styles from './style.module.css';
 
 /**
  * 步驟控制
  * @param {number} totalSteps - 所有步驟 
- * @param {number} currentStep - 當前步驟(預設：1)
- * @param {function} onPrevStepClick - 處理點擊上一步
- * @param {function} onNextStepClick -  處理點擊下一步
+ * @param {function} onStepClick - 處理點擊上一步
  * @returns 
  */
-function ProgressControl ({totalSteps, currentStep = 1, onPrevStepClick, onNextStepClick}) {
+function ProgressControl ({totalSteps, onStepClick}) {
+  const currentStep = useContext(StepContext);
   return (
     <div className={styles['progress-control']}>
       <div className="row">
@@ -21,7 +22,9 @@ function ProgressControl ({totalSteps, currentStep = 1, onPrevStepClick, onNextS
               type="button"
               text="上一步"
               arrowDirection='left'
-              onClick={onPrevStepClick}
+              onClick={() => {
+                onStepClick('prev');
+              }}
             />
           }
         </div>
@@ -33,7 +36,9 @@ function ProgressControl ({totalSteps, currentStep = 1, onPrevStepClick, onNextS
               type="button"
               text="下一步"
               arrowDirection='right'
-              onClick={onNextStepClick}
+              onClick={() => {
+                onStepClick('next');
+              }}
             /> : 
             <Button
               className={`is-active ${styles['btn']}`}

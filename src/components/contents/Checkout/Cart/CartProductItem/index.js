@@ -3,15 +3,15 @@ import Img from '../../../../widgets/Img';
 
 /**
  * 購物籃商品
+ * @param {string} id 商品編碼
  * @param {string} name 商品名
  * @param {string} img 圖片網址
  * @param {number} price 價格
  * @param {number} quantity 數量 
- * @param {function} onIncreaseClick 增加數量
- * @param {function} onDecreaseClick 減少數量
+ * @param {function} onCountClick 處理增加或減少購物籃商品數量
  * @returns 
  */
-function CartProductItem({name, img, price, quantity, onIncreaseClick, onDecreaseClick}) {
+function CartProductItem({id, name, img, price, quantity, onCountClick}) {
   return (
     <div className='row' data-count={quantity} data-price={price}>
       <div className='col-5 col-sm-4'>
@@ -30,7 +30,9 @@ function CartProductItem({name, img, price, quantity, onIncreaseClick, onDecreas
             aria-label='-'
             title='-'
             className={`${styles['cart__product-item__quantity-control']}`}
-            onClick={onDecreaseClick}
+            onClick={() => {
+              onCountClick(id, 'dec')
+            }}
             disabled={(quantity > 0) ? false : true }
           >
             -
@@ -41,7 +43,9 @@ function CartProductItem({name, img, price, quantity, onIncreaseClick, onDecreas
             aria-label='+'
             title='+'
             className={`${styles['cart__product-item__quantity-control']}`}
-            onClick={onIncreaseClick}
+            onClick={() => {
+              onCountClick(id, 'inc')
+            }}
           >
             +
           </button>

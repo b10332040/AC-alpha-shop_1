@@ -1,66 +1,39 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { CartContext } from './components/contents/Checkout/Cart/CartContext';
+import { StepContext } from './components/contents/Checkout/CheckoutContext';
 import Checkout from './components/contents/Checkout';
 import shoppingListData from './data/shoppingList';
 import './assets/styles/global.module.css';
 
 function App() {
-  const [checkoutStep, setCheckoutStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(1);
   const [shoppingList, setShoppingList] = useState(shoppingListData);
 
-  // 結帳 - 處理點擊上一步
-  function handleCheckoutPrevStepClick() {
-    setCheckoutStep(checkoutStep - 1);
+  // 結帳 - 處理點擊上或下一步
+  function handleStepClick(step) {
+    setCurrentStep((step === 'prev') ? currentStep - 1 : currentStep + 1);
   }
-  // 結帳 - 處理點擊下一步
-  function handleCheckoutNextStepClick() {
-    setCheckoutStep(checkoutStep + 1);
-  }
-  // 結帳 -處理增加購物籃商品數量
-  function handleCartIncreaseClick(productId) {
+  // 結帳 - 處理增加或減少購物籃商品數量
+  function handleCountClick(productId, action) {
     let newShoppingList = shoppingList.map(p => {
       if (p.id === productId) {
-        return {...p, quantity: p.quantity + 1}
+        return {...p, quantity: (action === 'inc') ? p.quantity + 1 : p.quantity - 1}
       } else {
         return p;
       }
     });
-
     setShoppingList(newShoppingList);
   }
-  // 結帳 -處理減少購物籃商品數量
-  function handleCartDecreaseClick(productId) {
-    let newShoppingList = shoppingList.map(p => {
-      if (p.id === productId) {
-        return {...p, quantity: p.quantity - 1}
-      } else {
-        return p;
-      }
-    });
-
-    setShoppingList(newShoppingList);
-  }
-
-  const data = {
-    component: Checkout,
-    props: {
-      currentStep: checkoutStep,
-      shoppingList: shoppingList,
-      onPrevStepClick: handleCheckoutPrevStepClick,
-      onNextStepClick: handleCheckoutNextStepClick,
-      onIncreaseClick: handleCartIncreaseClick,
-      onDecreaseClick: handleCartDecreaseClick
-    }
-  }
-  const Content = React.createElement(
-    data.component,
-    data.props
-  );
 
   return (
     <div className="App">
       {/* <Header/> */}
       <div className="p-y-5">
-        {Content}
+        <StepContext.Provider value={currentStep}>
+          <CartContext.Provider value={shoppingList}>
+            <Checkout onStepClick={handleStepClick} onCountClick={handleCountClick}></Checkout>
+          </CartContext.Provider>
+        </StepContext.Provider>
       </div>
       {/* <Footer/> */}
     </div>

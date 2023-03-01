@@ -1,15 +1,17 @@
+import { useContext } from 'react';
+import { CartContext } from './CartContext';
 import styles from './style.module.css';
 import CartProductItem from './CartProductItem';
 import CartCalcItem from './CartCalcItem';
 
 /**
  * 購物籃
- * @param {object} shoppingList - 購物清單
- * @param {function} onIncreaseClick - 處理增加購物籃商品數量
- * @param {function} onDecreaseClick - 處理減少購物籃商品數量
+ * @param {function} onCountClick - 處理增加或減少購物籃商品數量
  * @param {number} shipping - 運費 (預設：0)
  */
-function Cart({shoppingList, onIncreaseClick, onDecreaseClick, shipping=0}) {
+function Cart({onCountClick, shipping=0}) {
+  const shoppingList = useContext(CartContext);
+  
   // 計算總金額
   let totalPrice = 0;  
   for (let i = 0; i < shoppingList.length; i++) {
@@ -21,12 +23,7 @@ function Cart({shoppingList, onIncreaseClick, onDecreaseClick, shipping=0}) {
       <div key={`cart-productItem-${product.id}`} className='m-b-4'>
         <CartProductItem
           {...product}
-          onIncreaseClick={() => {
-            onIncreaseClick(product.id);
-          }}
-          onDecreaseClick={() => {
-            onDecreaseClick(product.id)
-          }}
+          onCountClick={onCountClick}
         />
       </div>
     );

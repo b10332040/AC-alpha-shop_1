@@ -1,14 +1,15 @@
-import { Fragment } from 'react';
+import { Fragment, useContext } from 'react';
+import { StepContext } from '../CheckoutContext';
 import styles from './style.module.css';
 
 /**
  * 進度條
  * @param {array} data - 所有步驟資料
- * @param {number} currentStep - 當前步驟
  * @returns 
  */
-function StepProgress({data, currentStep}) {
+function StepProgress({data}) {
   const totalSteps = data.length;
+  const currentStep = useContext(StepContext);
   const content = data.map((step, index) => {
     let thisStep = index + 1;
     const stepStatus = (currentStep === thisStep) ? 'is-focus' : (currentStep > thisStep) ? 'is-done' : 'is-undone';
