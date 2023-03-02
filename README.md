@@ -1,10 +1,13 @@
-# ALPHA Shop I-III
+# ALPHA Shop I-IV
 React 專案，練習：
 - 理解 React 專案基本的 Best Practice，如：資料夾結構、元件命名。
 - 從 ALPHA Shop 畫面上構思、抽象化成 Component。
 - 能使用 useState 及 props 來：
   - 切換步驟。
   - 控制購物車商品數量顯示正確總金額。
+- 使用 Context：
+  - 做全站的 state 變數管理。
+  - 儲存購物車總金額 (小計) 及持卡人姓名、卡號、有效期限及 CCV，並在按下確認下單後，能成功 console.log 出以上資訊。
 
 ---
 ### Environment - 環境建置
