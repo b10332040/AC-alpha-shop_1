@@ -20,7 +20,7 @@ function StepProgress({data}) {
           <span className={`${styles['step-progress__num']} d-inline-block`}>
             {thisStep}
           </span>
-          <span className={`${styles['step-progress__label']} d-none d-md-inline-block`}>{step.title}</span>
+          <span className={`${styles['step-progress__label']} d-none d-md-inline-block`}>{step}</span>
         </li>
         {
           (thisStep !== totalSteps) &&

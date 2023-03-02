@@ -1,7 +1,16 @@
+import { useContext } from 'react';
+import { ShoppingDataContext } from './../CheckoutContext'
 import Label from '../../../widgets/Label';
 import Input from '../../../widgets/Input';
 
-function CreditCard() {
+/**
+ * 付款資訊
+ * @param {function} onChange 處理輸入框的值改變 
+ * @returns 
+ */
+function CreditCard({onChange}) {
+  const shoppingData = useContext(ShoppingDataContext);
+
   return (
     <>
       <div className="row">
@@ -13,7 +22,11 @@ function CreditCard() {
           <Input 
             type="text"
             name="creditCardName"
+            value={(shoppingData.creditCardName) ? shoppingData.creditCardName : ''}
             placeholder="John Doe"
+            onChange={(e) => {
+              onChange(e);
+            }}
           />
         </div>
       </div>
@@ -26,7 +39,11 @@ function CreditCard() {
           <Input 
             type="text"
             name="creditCardNumber"
+            value={(shoppingData.creditCardNumber) ? shoppingData.creditCardNumber : ''}
             placeholder="1111 2222 3333 4444"
+            onChange={(e) => {
+              onChange(e);
+            }}
           />
         </div>
       </div>
@@ -39,7 +56,11 @@ function CreditCard() {
           <Input 
             type="text"
             name="creditCardEffectiveDate"
+            value={(shoppingData.creditCardEffectiveDate) ? shoppingData.creditCardEffectiveDate : ''}
             placeholder="MM/YY"
+            onChange={(e) => {
+              onChange(e);
+            }}
           />
         </div>
         <div className="col-12 col-md-6">
@@ -50,7 +71,11 @@ function CreditCard() {
           <Input 
             type="text"
             name="creditCardCVC"
+            value={(shoppingData.creditCardCVC) ? shoppingData.creditCardCVC : ''}
             placeholder="123"
+            onChange={(e) => {
+              onChange(e);
+            }}
           />
         </div> 
       </div>

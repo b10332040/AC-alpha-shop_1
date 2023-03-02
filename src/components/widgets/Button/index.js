@@ -26,15 +26,8 @@ export function ArrowButton({className, type='button', text, arrowDirection='rig
  * @returns 
  */
 export function Button({className, type='button', text, disabled=false}) {
-  if (disabled) {
-    return (
-      <button className={`btn ${className}`} type={type} title={text} aria-label={text} disabled>
-        {text}
-      </button>
-    );
-  }
   return (
-    <button className={`btn ${className}`} type={type} title={text} aria-label={text}>
+    <button className={`btn ${className}`} type={type} title={text} aria-label={text} disabled={disabled}>
       {text}
     </button>
   );
