@@ -482,8 +482,12 @@ select:invalid {
   width: 12rem;
   max-width: 100%;
 }
-:global(.btn:hover) {
+:global(.btn:not(:disabled):hover) {
   opacity: .85;
+}
+:global(.btn:disabled) {
+  cursor: default;
+  opacity: .7;
 }
 
 /* btn (is active) */
@@ -528,7 +532,7 @@ select:invalid {
   left: 0;
   transition: left, .3s;
 }
-:global(.btn:hover .btn__arrow.is-left) {
+:global(.btn:not(:disabled):hover .btn__arrow.is-left) {
   left: -0.5rem;
 }
 :global(.btn__arrow.is-left::before) {
@@ -541,7 +545,7 @@ select:invalid {
   right: 0;
   transition: right, .3s;
 }
-:global(.btn:hover .btn__arrow.is-right) {
+:global(.btn:not(:disabled):hover .btn__arrow.is-right) {
   right: -0.5rem;
 }
 :global(.btn__arrow.is-right::before) {

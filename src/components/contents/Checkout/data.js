@@ -1,8 +1,9 @@
+import { shoppingListData } from './Cart/data';
 import Address from './Address';
 import Shipping from './Shipping';
 import CreditCard from './CreditCard';
 
-const data = {
+export const stepsData = {
   step1: {
     component: Address,
     props: {
@@ -23,4 +24,15 @@ const data = {
   }
 }
 
-export default data;
+
+export const initShoppingData = {
+  totalPrice: getTotalPrice(shoppingListData)
+}
+
+function getTotalPrice(data) {
+  let totalPrice = 0;
+  for (let i = 0; i < data.length; i++) {
+    totalPrice += data[i].price * data[i].quantity;
+  }
+  return totalPrice;
+}

@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { StepContext } from '../CheckoutContext';
+import { StepContext, CanSubmitContext } from '../CheckoutContext';
 import {Button, ArrowButton} from '../../../widgets/Button';
 import styles from './style.module.css';
 
@@ -11,6 +11,7 @@ import styles from './style.module.css';
  */
 function ProgressControl ({totalSteps, onStepClick}) {
   const currentStep = useContext(StepContext);
+  const canSubmit = useContext(CanSubmitContext);
   return (
     <div className={styles['progress-control']}>
       <div className="row">
@@ -43,7 +44,8 @@ function ProgressControl ({totalSteps, onStepClick}) {
             <Button
               className={`is-active ${styles['btn']}`}
               type="submit"
-              text="確認下單"
+              text={(canSubmit) ? '確認下單' : '請購買商品 !'}
+              disabled={!canSubmit}
             />
           }
         </div>

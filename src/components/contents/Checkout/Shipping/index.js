@@ -1,5 +1,4 @@
-import data from './data.js'
-
+import { shippingData } from './data.js'
 import CheckBars from '../../../widgets/CheckBars';
 
 /**
@@ -12,8 +11,8 @@ function Shipping() {
       <CheckBars 
         type="radio"
         name="shipping"
-        value={data.value}
-        data={data.data}
+        value={shippingData.value}
+        data={shippingData.data}
         checkType="radio"
       />
     </>

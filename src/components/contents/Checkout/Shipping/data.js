@@ -1,4 +1,4 @@
-const data = {
+export const shippingData = {
   value: 'default',
   data: [
     {
@@ -17,5 +17,3 @@ const data = {
     }
   ]
 }
-
-export default data;
