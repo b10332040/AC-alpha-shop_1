@@ -1,9 +1,8 @@
 
 import React, { useState } from 'react';
-import { CartContext } from './Cart/CartContext';
-import { StepContext, ShoppingDataContext, CanSubmitContext } from './CheckoutContext';
-import { initShoppingData } from './data';
-import { shoppingListData } from './Cart/data';
+import { CartContext } from '../../../context/CheckoutContext';
+import { StepContext, ShoppingDataContext, CanSubmitContext } from '../../../context/CheckoutContext';
+import { shoppingListData } from '../../../data/checkoutData';
 import StepProgress from './StepProgress';
 import ProgressControl from './ProgressControl';
 import Cart from './Cart';
@@ -11,6 +10,14 @@ import Address from './Address';
 import Shipping from './Shipping';
 import CreditCard from './CreditCard';
 
+// 取得總金額
+function getTotalPrice(data) {
+  let totalPrice = 0;
+  for (let i = 0; i < data.length; i++) {
+    totalPrice += data[i].price * data[i].quantity;
+  }
+  return totalPrice;
+}
 
 /**
  * 結帳
@@ -19,7 +26,7 @@ import CreditCard from './CreditCard';
 function Checkout () {
   const [currentStep, setCurrentStep] = useState(1);
   const [shoppingList, setShoppingList] = useState(shoppingListData);
-  const [shoppingData, setShoppingData] = useState(initShoppingData);
+  const [shoppingData, setShoppingData] = useState({totalPrice: getTotalPrice(shoppingListData)});
   const stepTitles = ['寄送地址', '運送方式', '付款資訊'];
   const totalSteps = stepTitles.length;
   const canSubmit = (shoppingData.totalPrice > 0) ? true : false;
@@ -46,7 +53,6 @@ function Checkout () {
 
   // 處理增加或減少購物籃商品數量
   function handleCountClick(productId, action) {
-    let totalPrice = 0;
     let newShoppingList = shoppingList.map(p => {
       if (p.id === productId) {
         return {...p, quantity: (action === 'inc') ? p.quantity + 1 : p.quantity - 1}
@@ -55,14 +61,10 @@ function Checkout () {
       }
     });
 
-    for (let i = 0; i < newShoppingList.length; i++) {
-      totalPrice += newShoppingList[i].price * newShoppingList[i].quantity;
-    }
-
     setShoppingList(newShoppingList);
     setShoppingData({
       ...shoppingData,
-      totalPrice: totalPrice
+      totalPrice: getTotalPrice(newShoppingList)
     })
   }
 

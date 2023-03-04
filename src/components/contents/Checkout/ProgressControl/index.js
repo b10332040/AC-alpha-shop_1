@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { StepContext, CanSubmitContext } from '../CheckoutContext';
+import { StepContext, CanSubmitContext } from '../../../../context/CheckoutContext';
 import {Button, ArrowButton} from '../../../widgets/Button';
 import styles from './style.module.css';
 

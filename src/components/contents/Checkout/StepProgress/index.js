@@ -1,5 +1,5 @@
 import { Fragment, useContext } from 'react';
-import { StepContext } from '../CheckoutContext';
+import { StepContext } from '../../../../context/CheckoutContext';
 import styles from './style.module.css';
 
 /**

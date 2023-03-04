@@ -1,4 +1,21 @@
-const data = {
+export const shoppingListData = [
+  {
+    id: '1',
+    name: '貓咪罐罐',
+    img: 'https://picsum.photos/300/300?text=1',
+    price: 100,
+    quantity: 2,
+  },
+  {
+    id: '2',
+    name: '貓咪干干',
+    img: 'https://picsum.photos/300/300?text=2',
+    price: 200,
+    quantity: 1,
+  },
+];
+
+export const addressData = {
   call: {
     value: 'mr',
     options: [
@@ -143,4 +160,22 @@ const data = {
   }
 };
 
-export default data;
+export const shippingData = {
+  value: 'default',
+  data: [
+    {
+      id: 'shippingDefault',
+      value: 'default',
+      label: '標準運送',
+      price: 0,
+      note: '約 3~7 個工作天'
+    },
+    {
+      id: 'shippingDHL',
+      value: 'DHL',
+      label: 'DHL 貨運',
+      price: 500,
+      note: '48小時內送達'
+    }
+  ]
+}

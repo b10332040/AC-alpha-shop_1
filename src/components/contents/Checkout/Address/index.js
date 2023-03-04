@@ -1,5 +1,4 @@
-import data from './data.js';
-
+import { addressData } from '../../../../data/checkoutData.js';
 import Label from '../../../widgets/Label';
 import Input from '../../../widgets/Input';
 import Select from '../../../widgets/Select';
@@ -19,8 +18,8 @@ function Address() {
           />
           <Select 
             name="call"
-            value={data.call.value}
-            data={data.call.options}
+            value={addressData.call.value}
+            data={addressData.call.options}
           />
         </div>
         <div className="col-12 col-md-8">
@@ -69,7 +68,7 @@ function Address() {
           />
           <Select 
             name="city"
-            data={data.city.options}
+            data={addressData.city.options}
           />
         </div>
         <div className="col-12 col-md-8">

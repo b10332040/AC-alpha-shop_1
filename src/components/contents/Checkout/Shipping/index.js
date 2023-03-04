@@ -1,4 +1,4 @@
-import { shippingData } from './data.js'
+import { shippingData } from '../../../../data/checkoutData'
 import CheckBars from '../../../widgets/CheckBars';
 
 /**

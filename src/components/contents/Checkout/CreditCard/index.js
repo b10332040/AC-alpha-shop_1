@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { ShoppingDataContext } from './../CheckoutContext'
+import { ShoppingDataContext } from '../../../../context/CheckoutContext'
 import Label from '../../../widgets/Label';
 import Input from '../../../widgets/Input';
 
